@@ -1,0 +1,322 @@
+
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+#background {
+    position: absolute;
+    background: linear-gradient(to right, #D6E5F6, #ffffff);
+    width: 100%;
+    height: 500px;
+    z-index: -1;
+}
+
+.train-animation {
+    position: absolute;
+    top: 220px;
+    transform: translateX(-120%);
+    z-index: -1;
+    opacity: 0.5;
+    animation: moveTrain 5s forwards;
+}
+
+@keyframes moveTrain {
+    0% { transform: translateX(-150%); }
+    100% { transform: translateX(-65%); }
+}
+
+
+section {
+    padding: 25px 0;
+    height: 500px;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+button {
+    background-color: #2E45BF;
+    color: white;
+    border: none;
+    padding: 12px 23px;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+h1 {
+    padding-top: 100px;
+}
+
+h2 {
+    padding-top: 15px;
+}
+
+.booking-card {
+    display: flex;
+    justify-content: flex-start;
+    flex-direction: column;
+    align-items: flex-start;
+    border-radius: 10px;
+    margin-top: 200px;
+    width: 1200px;
+    min-width: 1200px;
+    max-width: 1500px;
+    height: auto;
+    background-color: white;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+}
+
+.booking-card h3 {
+    margin: 10px 15px;
+    font-size: 20px;
+}
+
+.booking-card form {
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    align-items: flex-end;
+    gap: 20px;
+    margin-top: 20px;
+    width: 100%;
+}
+
+.booking-card form > div {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.booking-card label {
+    font-size: 14px;
+    font-weight: 500;
+    color: #333;
+}
+
+.booking-card input, .booking-card select {
+    padding: 10px;
+    border: 1px solid #ccc;
+    font-size: 16px;
+    width: 225px;
+    height: 45px;
+    background-color: white;
+}
+
+.booking-card select {
+    cursor: pointer;
+}
+
+.booking-card button {
+    height: 45px;
+    padding: 10px 20px;
+}
+
+.ticket-features-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 200px;
+    margin-top: 100px;
+}
+
+.ticket-info{
+    width: 700px;
+}
+
+.ticket-info p {
+    margin-top: 15px;
+}
+
+ul {
+    list-style: none;
+    display: grid;
+    margin-top: 25px;
+    grid-template-columns: repeat(2, 300px);
+    gap: 20px;
+    align-items: center;
+}
+
+ul li {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+footer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #F5F6FA;
+    height: 200px;
+    color: rgb(0, 0, 0);
+    text-align: center;
+}
+
+
+
+
+@media (max-width: 1200px) {
+    section {
+        max-width: 100%;
+        height: auto;
+        padding: 20px 10px;
+    }
+    .booking-card {
+        width: 100%;
+        min-width: unset;
+        max-width: 100%;
+        margin-top: 100px;
+        padding: 15px;
+    }
+    .ticket-features-container {
+        gap: 50px;
+    }
+    .ticket-info {
+        width: 100%;
+    }
+    ul {
+        grid-template-columns: 1fr 1fr;
+        gap: 10px;
+    }
+    .trainticket-img {
+        display: none !important;
+    }
+}
+
+
+
+@media (max-width: 800px) {
+    nav {
+        flex-direction: column;
+        gap: 10px;
+    }
+    .booking-card form {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 10px;
+    }
+    .ticket-features-container {
+        flex-direction: column;
+        gap: 20px;
+        margin-top: 40px;
+    }
+    ul {
+        grid-template-columns: 1fr;
+    }
+    .booking-card input, .booking-card select {
+        width: 100%;
+        min-width: unset;
+    }
+
+    .ticket-features-container {
+        margin-top: 500px !important;
+        gap: 10px !important;
+        flex-direction: column !important;
+        clear: both;
+        position: relative;
+        z-index: 1;
+    }
+
+     .train-animation {
+        display: none !important;
+    }
+
+    .ticket-info{
+    width: 450px;
+    position: absolute;
+    top: -480px;
+}
+
+.ticket-info p {
+    margin-top: 15px;
+}
+
+ul {
+    list-style: none;
+    display: grid;
+
+    grid-template-columns: repeat(2, 200px);
+    gap: 20px;
+    align-items: center;
+}
+
+ul li {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+
+
+
+@media (max-width: 500px) {
+    section {
+        padding: 0px 2px;
+        text-align: center;
+    }
+    h1 {
+        padding-top: 40px;
+        font-size: 1.5em;
+        text-align: center;
+    }
+    h2 {
+        font-size: 1.2em;
+        text-align: center;
+    }
+    .booking-card {
+        padding: 8px;
+        margin-top: 40px;
+    }
+    .booking-card h3 {
+        font-size: 1em;
+    }
+    .ticket-info p {
+        font-size: 0.95em;
+    }
+    button {
+        font-size: 1em;
+    }
+    .train-animation {
+        display: none !important;
+    }
+
+
+
+.ticket-info{
+    width: 450px;
+    position: absolute;
+    top: -450px;
+}
+
+.ticket-info p {
+    margin-top: 15px;
+}
+
+ul {
+    list-style: none;
+    display: grid;
+
+    grid-template-columns: repeat(2, 200px);
+    gap: 20px;
+    align-items: center;
+}
+
+ul li {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+    
+}
+}

@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <div id="background"></div>
+    
+    <section>
+
+    <div class="train-animation">
+        <img src="./images/train.png" alt="">
+    </div>
+
+    <header>
+        <nav>
+            <a href="index.html"><img src="./images/logo.png" alt=""></a>
+            <button onclick="window.location.href='check-ticket.html'">ბილეთის შემოწმება/დაბრუნება</button>
+        </nav>
+    </header>
+
+    <div>
+            <h1>შეიძინეთ მატარებლის ბილეთები ონლაინ</h1>
+            <h3>გისურვებთ ბედნიერ მგზავრობას</h3>
+    </div>
+
+    <div class="booking-card">
+            <h3>დაჯავშნეთ მატარებლის ბილეთი</h3>
+            <form>
+                <div id="smaller-from">
+                    <select name="" id="from">
+                        <option value="">საიდან</option>
+                    </select>
+                </div>
+                <div id="smaller-to">
+                    <select name="" id="to">
+                        <option value="">სად</option>
+                    </select>
+                </div>
+                <div>
+                    <input type="date" id="date" placeholder="თარიღი">
+                </div>
+                <div>
+                    <input type="text" id="passengers" placeholder="მგზავრების რაოდენობა">
+                </div>
+                <button type="submit">ბილეთის ძიება</button>
+            </form>
+    </div>
+
+    </section>
+
+    <div class="ticket-features-container">
+        <img src="./images/trainticket.png" alt=" ">
+        <div class="ticket-info">
+            <h1>მატარებლის ბილეთები</h1>
+            <p>რკინიგზის ბილეთების შესაძენად თქვენ დაგჭირდებათ თითოეული მგზავრის პირადი ნომერი. გთხოვთ მოამზადოთ ეს ინფორმაცია წინასწარ.</p>
+            <ul class="ticket-features ticket-features-grid">
+                <li><img src="./images/unoffer.png" alt="შეუდარებელი შეთავაზებები"> შეუდარებელი შეთავაზებები</li>
+                <li><img src="./images/suppor24.png" alt="24X7 მხარდაჭერა"> 24/7 მხარდაჭერა</li>
+                <li><img src="./images/secure100.png" alt="100% უსაფრთხო"> 100%-ით უსაფრთხო</li>
+                <li><img src="./images/truspay.png" alt="100% უსაფრთხო გადახდა"> 100%-ით უსაფრთხო გადახდა</li>
+            </ul>
+        </div>
+        
+    </div>
+
+    <footer>
+        <p>2023 STEP RAILWAY. ყველა უფლება დაცულია.</p>
+    </footer>
+
+
+    <script src="scripts.js"></script>
+</body>
+</html>

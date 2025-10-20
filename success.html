@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>გადახდის წარმატება</title>
+    <link rel="stylesheet" href="book.css">
+</head>
+<body>
+    <nav>
+    <a href="index.html"><img src="./images/logo.png" alt=""></a>
+        <button>ბილეთის შემოწმება/დაბრუნება</button>
+    </nav>
+    <div id="background">
+        <h2>გადახდის წარმატება</h2>
+    </div>
+    <section>
+        <div class="payment-container">
+            <div class="payment-title">სულ გადასახდელი: 35.00₾</div>
+                <form id="payment-form" class="payment-form">
+                    <div class="form-row">
+                        <label for="cardNumber">ბარათის ნომერი*</label>
+                        <input type="text" id="cardNumber" class="payment-input" placeholder="2456 1665 5155 5151">
+                    </div>
+                    <div class="payment-row">
+                        <div class="payment-col">
+                            <label for="exp-date">მოწურვების ვადა*</label>
+                            <input type="text" id="exp-date" class="payment-input" placeholder="DD/MM/YY">
+                        </div>
+                        <div class="payment-col">
+                            <label for="cvc">CVC / CVV</label>
+                            <input type="text" id="cvc" class="payment-input" placeholder="123">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <label for="cardholder">ბარათის მფლობელი</label>
+                        <input type="text" id="cardholder" class="payment-input" placeholder="J. smith">
+                    </div>
+                    <button type="submit" class="btn btn-primary payment-btn">გადახდა</button>
+                </form>
+                <script>
+                // On payment submit, gather all data and save to localStorage, then redirect
+                document.getElementById('payment-form').addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    // Get payment info
+                    const cardholder = document.getElementById('cardholder').value;
+                    const cardNumber = document.getElementById('cardNumber').value;
+                    // Get previous booking data
+                    let data = JSON.parse(localStorage.getItem('bookingData') || '{}');
+                    // Add payment info
+                    data.cardholder = cardholder;
+                    data.cardNumber = cardNumber;
+                    // Add date
+                    data.date = new Date().toLocaleDateString('ka-GE', { year: 'numeric', month: '2-digit', day: '2-digit' });
+                    // Generate ticketId (UUID) if not present
+                    if (!data.ticketId) {
+                        data.ticketId = ([1e7]+-1e3+-4e3+-8e3+-1e11).replace(/[018]/g, c =>
+                            (c ^ crypto.getRandomValues(new Uint8Array(1))[0] & 15 >> c / 4).toString(16)
+                        );
+                    }
+                    localStorage.setItem('bookingData', JSON.stringify(data));
+                    window.location.href = 'final-invoice.html';
+                });
+                </script>
+        </div>
+    </section>
+</body>
+</html>

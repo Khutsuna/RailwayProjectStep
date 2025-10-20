@@ -1,0 +1,451 @@
+/* Ensure payment form inputs are full width and aligned */
+.payment-form label {
+    display: block;
+    margin-bottom: 6px;
+    font-size: 15px;
+    color: #222;
+    font-weight: 500;
+}
+.payment-input {
+    width: 100%;
+    padding: 12px;
+    font-size: 16px;
+    border: 1px solid #dbe1ea;
+    border-radius: 6px;
+    margin-bottom: 18px;
+    background: #fff;
+    box-sizing: border-box;
+}
+.payment-row {
+    display: flex;
+    gap: 18px;
+}
+.payment-col {
+    flex: 1;
+    min-width: 0;
+}
+/* Payment form styles for success.html */
+.payment-container {
+    max-width: 900px;
+    margin: 48px auto 0 auto;
+    background: #f6f8fa;
+    border-radius: 14px;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.06);
+    padding: 36px 32px 32px 32px;
+}
+.payment-title {
+    font-size: 18px;
+    color: #222;
+    margin-bottom: 18px;
+    font-weight: 600;
+}
+.payment-form label {
+    display: block;
+    margin-bottom: 6px;
+    font-size: 15px;
+    color: #222;
+    font-weight: 500;
+}
+.payment-form input {
+    width: 100%;
+    padding: 12px;
+    font-size: 16px;
+    border: 1px solid #dbe1ea;
+    border-radius: 6px;
+    margin-bottom: 18px;
+    background: #fff;
+}
+.payment-row {
+    display: flex;
+    gap: 18px;
+}
+.payment-col {
+    flex: 1;
+}
+.payment-btn {
+    width: 200px;
+    margin: 24px auto 0 auto;
+    display: block;
+    font-size: 18px;
+}
+/* Ensure booking and invoice are side by side */
+.booking-layout {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: center;
+    gap: 32px;
+    width: 100%;
+    max-width: 1300px;
+    margin: 0 auto;
+    box-sizing: border-box;
+}
+.booking-container {
+    flex: 1 1 600px;
+    min-width: 350px;
+    max-width: 800px;
+}
+.invoice-box {
+    flex: 0 0 340px;
+    min-width: 300px;
+    max-width: 360px;
+    margin-top: 40px;
+}
+@media (max-width: 1100px) {
+    .booking-layout {
+        flex-direction: column;
+        gap: 24px;
+        align-items: stretch;
+    }
+    .invoice-box {
+        max-width: 100%;
+        min-width: 0;
+    }
+}
+/* Layout for booking and invoice side by side */
+.booking-layout {
+    display: flex;
+    gap: 32px;
+    align-items: flex-start;
+    justify-content: center;
+}
+.invoice-box {
+    background: #f6f8fa;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(44,62,80,0.06);
+    padding: 32px 28px 20px 28px;
+    min-width: 320px;
+    max-width: 340px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+}
+.invoice-title {
+    text-align: center;
+    font-size: 22px;
+    color: #2E45BF;
+    margin-bottom: 18px;
+}
+.invoice-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 18px;
+    margin-bottom: 12px;
+}
+.invoice-row--input {
+    background: #fff;
+    border-radius: 6px;
+    border: 1px solid #e0e0e0;
+    padding: 8px 12px;
+    margin-bottom: 18px;
+}
+.invoice-seat {
+    border: none;
+    background: transparent;
+    font-size: 18px;
+    color: #222;
+    width: 80px;
+}
+.invoice-price {
+    font-size: 18px;
+    color: #2E45BF;
+    font-weight: 600;
+}
+.invoice-row--checkbox {
+    margin-bottom: 18px;
+    font-size: 15px;
+    gap: 8px;
+}
+.invoice-btn {
+    width: 100%;
+    font-size: 18px;
+    margin-top: 8px;
+}
+.seat-map {
+    display: flex;
+    gap: 18px;
+    justify-content: center;
+    margin: 24px 0;
+}
+.seat-col {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+}
+.seat-btn {
+    background: #c6e97a;
+    border: 2px solid #b2d96b;
+    color: #222;
+    font-size: 16px;
+    font-weight: 600;
+    border-radius: 8px;
+    padding: 8px 18px;
+    margin: 2px 0;
+    cursor: pointer;
+    min-width: 48px;
+    transition: background 0.2s, border-color 0.2s, color 0.2s;
+}
+.seat-btn.selected {
+    background: #fff;
+    border-color: #2E45BF;
+    color: #2E45BF;
+}
+.seat-btn.occupied {
+    background: #f66;
+    border-color: #d33;
+    color: #fff;
+    cursor: not-allowed;
+}
+.toilet-label {
+    background: #e0e0e0;
+    color: #444;
+    font-size: 14px;
+    border-radius: 6px;
+    padding: 4px 12px;
+    margin: 4px 0;
+    width: 60px;
+    text-align: center;
+}
+.spacer {
+    height: 24px;
+}
+
+.wagon-list {
+    display: flex;
+    gap: 24px;
+    justify-content: center;
+    margin: 32px 0 0 0;
+}
+.wagon-img-btn {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    cursor: pointer;
+    transition: background 0.2s, border-color 0.2s;
+    &:hover {
+        transform: scale(1.10);
+    }
+}
+.wagon-img-btn.selected {
+    background: #2E45BF;
+    border-color: #2E45BF;
+}
+.wagon-img {
+    width: 120px;
+    height: auto;
+    margin-bottom: 10px;
+    object-fit: contain;
+}
+.wagon-label {
+    font-size: 18px;
+    font-weight: 600;
+    color: #2E45BF;
+}
+.wagon-img-btn.selected .wagon-label {
+    color: #fff;
+}
+.modal {
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: rgba(44, 62, 80, 0.25);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+}
+.modal-content {
+    background: #fff;
+    border-radius: 12px;
+    padding: 40px 32px;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.18);
+    min-width: 320px;
+    text-align: center;
+}
+.wagon-list {
+    display: flex;
+    gap: 24px;
+    justify-content: center;
+    margin: 32px 0 0 0;
+}
+.wagon-btn {
+    background: #f6f8fa;
+    border: 2px solid #2E45BF;
+    color: #2E45BF;
+    font-size: 18px;
+    font-weight: 600;
+    border-radius: 8px;
+    padding: 18px 32px;
+    cursor: pointer;
+    transition: background 0.2s, color 0.2s;
+}
+.wagon-btn.selected {
+    background: #2E45BF;
+    color: #fff;
+}
+.passenger-fields {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 28px;
+}
+.passenger-input {
+    padding: 10px 16px;
+    font-size: 16px;
+    border: 1px solid #e0e0e0;
+    border-radius: 6px;
+    width: 180px;
+}
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: white;
+    padding: 30px 210px;
+    width: 100%;
+}
+button {
+    background-color: #2E45BF;
+    color: white;
+    border: none;
+    padding: 12px 23px;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+}
+#background {
+    width: 100%;
+    height: 200px;
+    background-color: #2840BF;
+    color: white;
+    padding: 55px 210px;
+}
+.booking-container {
+    max-width: 900px;
+    margin: 40px auto;
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+    padding: 32px 40px;
+}
+.ticket-summary {
+    background: #f6f8fa;
+    border-radius: 8px;
+    padding: 24px;
+    margin-bottom: 32px;
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr;
+    gap: 16px;
+    align-items: center;
+    font-size: 18px;
+}
+.booking-form h3 {
+    margin-bottom: 18px;
+    font-size: 22px;
+}
+.form-row {
+    display: flex;
+    gap: 18px;
+    margin-bottom: 24px;
+}
+.booking-form input {
+    padding: 12px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    width: 100%;
+}
+.btn.btn-primary {
+    background-color: #2E45BF;
+    color: #fff;
+    border: none;
+    padding: 12px 32px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 18px;
+}
+
+.passenger-section {
+    margin-top: 40px;
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+    padding: 32px 24px;
+}
+.passenger-section h3 {
+    font-size: 22px;
+    margin-bottom: 18px;
+}
+.passenger-title {
+    font-size: 20px;
+    font-weight: 600;
+    margin-bottom: 18px;
+}
+.passenger-tabs {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 28px;
+}
+.tab {
+    background: #fff;
+    border: 1px solid #e0e0e0;
+    border-radius: 6px;
+    padding: 10px 24px;
+    font-size: 16px;
+    cursor: pointer;
+    color: #2E45BF;
+    font-weight: 500;
+}
+.tab.active {
+    background: #2E45BF;
+    color: #fff;
+    border: none;
+}
+.tab.btn-primary {
+    background: #2E45BF;
+    color: #fff;
+    border: none;
+}
+.luggage-info {
+    display: flex;
+    gap: 32px;
+    margin-top: 32px;
+    margin-bottom: 16px;
+}
+.luggage-item {
+    background: #f6f8fa;
+    border-radius: 8px;
+    padding: 18px 16px;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-width: 180px;
+}
+.luggage-icon {
+    width: 48px;
+    height: 48px;
+    margin-bottom: 12px;
+}
+.luggage-status {
+    margin-top: 12px;
+    font-size: 16px;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+.luggage-status.included {
+    color: #2E45BF;
+}
+.luggage-status.not-included {
+    color: #2840BF;
+    opacity: 0.6;
+}

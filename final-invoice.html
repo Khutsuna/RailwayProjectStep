@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Final Invoice</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="book.css">
+    <style>
+        .invoice-container {
+            max-width: 900px;
+            margin: 40px auto;
+            background: #fff;
+            border-radius: 12px;
+            box-shadow: 0 2px 16px #0001;
+            padding: 48px 48px 36px 48px;
+        }
+        .invoice-row {
+            display: flex;
+            gap: 18px;
+            margin-bottom: 10px;
+            align-items: center;
+        }
+        .invoice-row label {
+            min-width: 110px;
+            color: #888;
+            font-size: 14px;
+        }
+        .invoice-row .value {
+            font-weight: 500;
+            margin-right: 24px;
+        }
+        .invoice-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 18px 0 18px 0;
+        }
+        .invoice-table th, .invoice-table td {
+            border: 1px solid #e0e0e0;
+            padding: 7px 10px;
+            text-align: center;
+        }
+        .invoice-table th {
+            background: #f5f7fa;
+            font-weight: 600;
+        }
+        .invoice-total {
+            margin-left: auto;
+            font-size: 18px;
+            font-weight: 700;
+            color: #2E45BF;
+        }
+        .invoice-footer {
+            margin-top: 24px;
+            font-size: 13px;
+            color: #888;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+    <a href="index.html"><img src="images/logo.png" alt="Step Railway" class="logo"></a>
+        <span>Step Railway</span>
+    </div>
+    <div class="invoice-container">
+        <div id="invoice-section"></div>
+    </div>
+    <script src="final-invoice.js"></script>
+</body>
+</html>

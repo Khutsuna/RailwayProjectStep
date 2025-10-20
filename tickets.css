@@ -1,0 +1,73 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: white;
+    padding: 30px 210px;
+    width: 100%;
+}
+
+button {
+    background-color: #2E45BF;
+    color: white;
+    border: none;
+    padding: 12px 23px;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+#background {
+    width: 100%;
+    height: 200px;
+    background-color: #2840BF;
+    color: white;
+    padding: 55px 210px;
+}
+
+.results {
+    max-width: 1000px;
+    margin: 40px auto;
+}
+.results__title {
+    text-align: center;
+    margin-bottom: 16px;
+}
+.results__list {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+}
+.result-card {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr auto;
+    align-items: center;
+    padding: 40px;
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.08);
+}
+
+.result-card__name { color: #666; font-size: 14px; }
+.result-card__time { font-size: 18px; font-weight: 600; }
+.result-card__city { color: #666; font-size: 12px; }
+.btn.btn-primary {
+    background-color: #2E45BF;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 6px;
+    cursor: pointer;
+}
+.results__loading, .results__empty, .results__error {
+    text-align: center;
+    color: #333;
+}
