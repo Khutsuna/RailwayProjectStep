@@ -71,3 +71,48 @@ button {
     text-align: center;
     color: #333;
 }
+
+/* Responsive Design */
+@media (max-width: 1200px) {
+    nav {
+        padding: 30px 40px;
+    }
+    #background {
+        padding: 55px 40px;
+    }
+    .results {
+        max-width: 95%;
+    }
+    .result-card {
+        padding: 25px;
+    }
+}
+
+@media (max-width: 800px) {
+    nav {
+        flex-direction: column;
+        gap: 10px;
+        padding: 20px 10px;
+    }
+    #background {
+        padding: 35px 10px;
+        height: auto;
+        text-align: center;
+    }
+    .results {
+        margin: 20px auto;
+    }
+    .result-card {
+        grid-template-columns: 1fr 1fr;
+        gap: 10px;
+        padding: 15px;
+    }
+    .result-card__time {
+        font-size: 16px;
+    }
+    .btn.btn-primary {
+        padding: 10px 15px;
+        font-size: 15px;
+    }
+}
+
