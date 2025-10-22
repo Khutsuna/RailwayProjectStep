@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>ბილეთის შემოწმება/დაბრუნება</title>
-    <link rel="stylesheet" href="book.css">
+    <link rel="stylesheet" href="styles.css">
     <style>
         body { background: #f5f6fa; }
         .container {
@@ -65,7 +65,7 @@
         <div id="ticket-result" style="margin-top:30px;font-size:1.2em;font-weight:500;color:#2346c7;"></div>
     </div>
 <script>
-// Check ticket number against data.ticketId if available, else fallback to static list
+// Example seat IDs that are valid
 const validSeatIds = ['12345', '67890', 'A001', 'B002'];
 document.getElementById('check-form').addEventListener('submit', function(e) {
     e.preventDefault();
@@ -76,18 +76,7 @@ document.getElementById('check-form').addEventListener('submit', function(e) {
         result.style.color = '#d00';
         return;
     }
-    let found = false;
-    // Try to get ticketId from localStorage bookingData
-    try {
-        const bookingData = JSON.parse(localStorage.getItem('bookingData'));
-        if (bookingData && bookingData.ticketId && seatId === bookingData.ticketId) {
-            found = true;
-        }
-    } catch (e) {}
-    if (!found && validSeatIds.includes(seatId)) {
-        found = true;
-    }
-    if (found) {
+    if (validSeatIds.includes(seatId)) {
         result.textContent = 'ბილეთი მოიძებნა!';
         result.style.color = '#2346c7';
     } else {
@@ -95,11 +84,10 @@ document.getElementById('check-form').addEventListener('submit', function(e) {
         result.style.color = '#d00';
     }
 });
-</script>
 
-<footer>
+    <footer>
         <p>2023 STEP RAILWAY. ყველა უფლება დაცულია.</p>
-</footer>
-
+    </footer>
+</script>
 </body>
 </html>
