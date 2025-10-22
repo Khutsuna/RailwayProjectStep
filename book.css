@@ -565,26 +565,41 @@ button {
 }
 
 @media (max-width: 500px) {
+    html, body {
+        max-width: 100vw;
+        overflow-x: hidden;
+    }
     nav {
         padding: 10px 2px;
+        max-width: 100vw;
+        overflow-x: hidden;
     }
     #background {
         padding: 20px 2px;
         font-size: 1em;
+        max-width: 100vw;
+        overflow-x: hidden;
     }
     .booking-container {
         padding: 8px 2px;
         margin: 8px auto;
         max-width: 100vw;
         min-width: 0;
-        width: 90vw;
+        width: 98vw;
+        box-sizing: border-box;
     }
     .invoice-box {
-        padding: 8px 100px;
+        padding: 8px 2px;
         margin-top: 6px;
+        min-width: 0;
+        max-width: 100vw;
+        width: 100%;
+        box-sizing: border-box;
     }
     .passenger-section {
         padding: 12px 2px;
+        max-width: 100vw;
+        overflow-x: hidden;
     }
     .passenger-title, .passenger-section h3, .invoice-title {
         font-size: 1em;
@@ -593,23 +608,30 @@ button {
         font-size: 13px;
         padding: 12px;
         gap: 4px;
+        max-width: 100vw;
+        overflow-x: hidden;
     }
     .passenger-input {
         width: 100%;
-        min-width: 180px;
-        max-width: 90%;
+        max-width: 100vw;
+        box-sizing: border-box;
     }
     .seat-btn {
         font-size: 13px;
         padding: 6px 10px;
-        min-width: 36px;
+        min-width: 0;
+        width: auto;
+        box-sizing: border-box;
     }
     .wagon-img {
         width: 80px;
+        max-width: 100vw;
     }
     .luggage-item {
-        min-width: 120px;
+        min-width: 0;
         padding: 10px 4px;
+        max-width: 100vw;
+        box-sizing: border-box;
     }
 
     .passenger-fields {
@@ -617,19 +639,24 @@ button {
         align-items: center;
         gap: 12px;
         margin-bottom: 28px;
+        max-width: 100vw;
+        overflow-x: hidden;
+        box-sizing: border-box;
     }
 
     .passenger-fields button {
         grid-column: span 2;
         margin-top: 20px;
+        max-width: 100vw;
+        box-sizing: border-box;
     }
 
     .form-row {
         flex-direction: column;
         gap: 12px;
         width: 100%;
-        min-width: 180px;
-        max-width: 100%;
+        max-width: 100vw;
+        box-sizing: border-box;
     }
-
+}
 }
