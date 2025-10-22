@@ -23,6 +23,11 @@ button {
     border-radius: 5px;
     font-size: 16px;
     cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+button:hover {
+    background-color: #314dff;
 }
 
 #background {
@@ -66,7 +71,13 @@ button {
     padding: 10px 20px;
     border-radius: 6px;
     cursor: pointer;
+    transition: background-color 0.2s;
 }
+
+.btn.btn-primary:hover {
+    background-color: #314dff;
+}
+
 .results__loading, .results__empty, .results__error {
     text-align: center;
     color: #333;

@@ -1,3 +1,9 @@
+button, .btn, input[type="button"], input[type="submit"] {
+    transition: background-color 0.2s;
+}
+button:hover, .btn:hover, input[type="button"]:hover, input[type="submit"]:hover {
+    background-color: #314dff;
+}
 /* Ensure payment form inputs are full width and aligned */
 .payment-form label {
     display: block;
@@ -167,6 +173,11 @@
     width: 100%;
     font-size: 18px;
     margin-top: 8px;
+    transition: background-color 0.2s;
+}
+
+.invoice-btn:hover {
+    background-color: #314dff;
 }
 .seat-map {
     display: flex;
@@ -375,6 +386,11 @@ button {
     border-radius: 6px;
     cursor: pointer;
     font-size: 18px;
+    transition: background-color 0.2s;
+}
+
+.btn.btn-primary:hover {
+    background-color: #314dff;
 }
 
 .passenger-section {
@@ -417,6 +433,10 @@ button {
     background: #2E45BF;
     color: #fff;
     border: none;
+    transition: background-color 0.2s;
+}
+.tab.btn-primary:hover {
+    background-color: #314dff;
 }
 .luggage-info {
     display: flex;
@@ -453,6 +473,17 @@ button {
 .luggage-status.not-included {
     color: #2840BF;
     opacity: 0.6;
+}
+
+footer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #F5F6FA;
+    height: 200px;
+    margin-top: 100px;
+    color: rgb(0, 0, 0);
+    text-align: center;
 }
 
 /* Responsive Design */

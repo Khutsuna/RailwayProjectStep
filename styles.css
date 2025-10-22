@@ -1,3 +1,10 @@
+/* Smooth hover for ბილეთის შემოწმება/დაბრუნება button */
+.btn, button.btn, .check-ticket-btn {
+    transition: background-color 0.2s;
+}
+.btn:hover, button.btn:hover, .check-ticket-btn:hover {
+    background-color: #314dff;
+}
 * {
     margin: 0;
     padding: 0;
@@ -52,6 +59,11 @@ button {
     border-radius: 5px;
     font-size: 16px;
     cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+button:hover {
+    background-color: #314dff;
 }
 
 h1 {
@@ -127,6 +139,11 @@ h2 {
 .booking-card button {
     height: 45px;
     padding: 10px 20px;
+    transition: background-color 0.2s;
+}
+
+.booking-card button:hover {
+    background-color: #314dff;
 }
 
 .ticket-features-container {

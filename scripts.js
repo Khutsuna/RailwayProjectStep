@@ -75,8 +75,14 @@ bookingForm?.addEventListener('submit', (e) => {
   const from = stationFrom?.value || '';
   const to = stationTo?.value || '';
   const dateStr = dateInput?.value || '';
+  const passengers = document.getElementById('passengers')?.value || '';
+  // Validate all fields
+  if (!from || !to || !dateStr || !passengers) {
+    alert('გთხოვთ შეავსოთ ყველა ველი!');
+    return;
+  }
   // Redirect to tickets.html with query params
-  const params = new URLSearchParams({ from, to, date: dateStr });
+  const params = new URLSearchParams({ from, to, date: dateStr, passengers });
   window.location.href = `tickets.html?${params.toString()}`;
 });
 
