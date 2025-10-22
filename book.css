@@ -76,7 +76,7 @@
     justify-content: center;
     gap: 32px;
     width: 100%;
-    max-width: 1300px;
+    max-width: 1500px;
     margin: 0 auto;
     box-sizing: border-box;
 }
@@ -119,6 +119,11 @@
     width: 100%;
     display: flex;
     flex-direction: column;
+    .passenger-input {
+        width: 100%;
+        min-width: 220px;
+        max-width: 100%;
+    }
     align-items: stretch;
 }
 .invoice-title {
@@ -169,6 +174,7 @@
     justify-content: center;
     margin: 24px 0;
 }
+
 .seat-col {
     display: flex;
     flex-direction: column;
@@ -448,4 +454,325 @@ button {
 .luggage-status.not-included {
     color: #2840BF;
     opacity: 0.6;
+}
+
+footer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #F5F6FA;
+    height: 200px;
+    margin-top: 100px;
+    color: rgb(0, 0, 0);
+    text-align: center;
+}
+
+/* Responsive Design */
+@media (max-width: 1200px) {
+    nav {
+        padding: 30px 40px;
+    }
+    #background {
+        padding: 55px 40px;
+    }
+    .booking-layout {
+        max-width: 100%;
+        gap: 18px;
+    }
+    .booking-container {
+        padding: 32px 18px;
+        max-width: 100%;
+    }
+    .invoice-box {
+        margin-top: 24px;
+        max-width: 100%;
+        min-width: 0px;
+        padding: 24px 12px;
+        margin-left: auto;
+        margin-right: auto;
+        display: block;
+    }
+    .luggage-info {
+        gap: 18px;
+    }
+    .ticket-summary {
+        grid-template-columns: 1fr 1fr 1fr;
+        font-size: 16px;
+    }
+
+    .invoice-box {
+    background: #f6f8fa;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(44,62,80,0.06);
+    padding: 32px 28px 20px 28px;
+    min-width: 500px;
+    max-width: 340px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+}
+
+
+@media (max-width: 800px) {
+    html, body {
+        overflow-x: hidden;
+        width: 100vw;
+        box-sizing: border-box;
+    }
+    .modal {
+        width: 100vw;
+        min-width: 0;
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+    .modal-content {
+        width: 100vw;
+        min-width: 0;
+        max-width: 100vw;
+        margin: 0;
+        padding: 16px 0 24px 0;
+        box-sizing: border-box;
+    }
+    .seat-map {
+        width: 100vw;
+        max-width: 100vw;
+        overflow-x: auto;
+        box-sizing: border-box;
+    }
+
+    .modal {
+        width: 100%;
+    }
+
+    .modal-content {
+        width: 90%;
+        height: 500px;
+    }
+
+    .seat-map {
+        gap: 8px;
+        margin: 12px 0;
+        width: 100%;
+        justify-content: center;
+    }
+    .seat-col {
+        gap: 0px;
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(48px, 2fr));
+        flex-direction: row;
+        flex-wrap: wrap;
+        
+    }
+    .seat-btn {
+        font-size: 15px;
+        padding: 7px 10px;
+        min-width: 38px;
+        border-radius: 6px;
+    }
+
+    nav {
+        flex-direction: column;
+        gap: 10px;
+        padding: 20px 10px;
+    }
+    #background {
+        padding: 35px 10px;
+        height: auto;
+        text-align: center;
+    }
+    .booking-layout {
+        flex-direction: column;
+        gap: 12px;
+        align-items: stretch;
+    }
+    .booking-container {
+        padding: 18px 6px;
+        margin: 20px auto;
+        max-width: 100vw;
+        min-width: 0;
+        width: 80vw;
+    }
+    .invoice-box {
+        padding: 16px 10px;
+        margin-top: 12px;
+    }
+    .passenger-fields {
+        flex-direction: column;
+        gap: 8px;
+    }
+    .luggage-info {
+        flex-direction: column;
+        gap: 12px;
+    }
+    .ticket-summary {
+        grid-template-columns: 1fr;
+        font-size: 15px;
+        gap: 8px;
+    }
+    .seat-map {
+        flex-direction: column;
+        gap: 8px;
+    }
+    .wagon-list {
+        flex-direction: column;
+        gap: 12px;
+    }
+    .passenger-fields {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        margin-bottom: 28px;
+    }
+
+    .passenger-fields button {
+        grid-column: span 2;
+        margin-top: 20px;
+    }
+
+    .wagon-img-btn.selected {
+    background: #2E45BF;
+    border-color: #2E45BF;
+}
+.wagon-img {
+    width: 100px;
+    height: auto;
+    margin-bottom: 10px;
+    object-fit: contain;
+}
+.wagon-label {
+    font-size: 18px;
+    font-weight: 600;
+    color: #2E45BF;
+}
+.wagon-img-btn.selected .wagon-label {
+    color: #fff;
+}
+.modal {
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: rgba(44, 62, 80, 0.25);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+}
+.modal-content {
+    background: #fff;
+    border-radius: 12px;
+    padding: 40px 32px;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.18);
+    min-width: 320px;
+    text-align: center;
+}
+.wagon-list {
+    display: flex;
+    gap: 24px;
+    justify-content: center;
+    margin: 32px 0 0 0;
+}
+.wagon-btn {
+    background: #f6f8fa;
+    border: 2px solid #2E45BF;
+    color: #2E45BF;
+    font-size: 18px;
+    font-weight: 600;
+    border-radius: 8px;
+    padding: 18px 32px;
+    cursor: pointer;
+    transition: background 0.2s, color 0.2s;
+}
+.wagon-btn.selected {
+    background: #2E45BF;
+    color: #fff;
+}
+
+}
+
+@media (max-width: 500px) {
+    html, body {
+        overflow-x: hidden;
+        width: 100vw;
+        box-sizing: border-box;
+    }
+    .modal {
+        width: 100vw;
+        min-width: 0;
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+    .modal-content {
+        width: 100vw;
+        min-width: 0;
+        max-width: 100vw;
+        margin: 0;
+        padding: 10px 0 24px 0;
+        box-sizing: border-box;
+    }
+    nav {
+        padding: 10px 2px;
+    }
+
+    .booking-container {
+        padding: 8px 2px;
+        margin: 8px auto;
+        max-width: 100vw;
+        min-width: 0;
+        width: 90vw;
+    }
+    .invoice-box {
+        padding: 8px 35px;
+        margin-top: 6px;
+    }
+    .passenger-section {
+        padding: 12px 2px;
+    }
+    .passenger-title, .passenger-section h3, .invoice-title {
+        font-size: 1em;
+    }
+    .ticket-summary {
+        font-size: 13px;
+        padding: 12px;
+        gap: 4px;
+    }
+    .passenger-input {
+        width: 100%;
+        min-width: 180px;
+        max-width: 90%;
+    }
+    .seat-btn {
+        font-size: 13px;
+        padding: 6px 10px;
+        min-width: 36px;
+    }
+    .wagon-img {
+        width: 80px;
+    }
+    .luggage-item {
+        min-width: 120px;
+        padding: 10px 4px;
+    }
+
+    .passenger-fields {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        margin-bottom: 28px;
+    }
+
+    .passenger-fields button {
+        grid-column: span 2;
+        margin-top: 20px;
+    }
+
+    .form-row {
+        flex-direction: column;
+        gap: 12px;
+        width: 100%;
+        min-width: 180px;
+        max-width: 100%;
+    }
+
 }

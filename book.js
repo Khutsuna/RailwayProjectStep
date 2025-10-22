@@ -146,8 +146,52 @@ document.querySelectorAll('.seat-btn').forEach(btn => {
 });
 
 // Invoice registration button logic
-document.querySelector('.invoice-btn')?.addEventListener('click', function(e) {
-    e.preventDefault();
+const registerBtn = document.getElementById('register-btn');
+function isFormValid() {
+    return (
+        document.getElementById('email').value.trim() &&
+        document.getElementById('phone').value.trim() &&
+        document.getElementById('passenger-name').value.trim() &&
+        document.getElementById('passenger-lastname').value.trim() &&
+        document.getElementById('passenger-id').value.trim() &&
+        selectedWagon &&
+        selectedSeat &&
+        document.getElementById('invoice-check').checked
+    );
+}
+
+function updateRegisterBtn() {
+    if (registerBtn) {
+        registerBtn.disabled = !isFormValid();
+    }
+}
+
+// Listen to all relevant fields for changes
+['email','phone','passenger-name','passenger-lastname','passenger-id','invoice-check'].forEach(id => {
+    const el = document.getElementById(id);
+    if (el) {
+        el.addEventListener('input', updateRegisterBtn);
+        el.addEventListener('change', updateRegisterBtn);
+    }
+});
+
+// Also update when seat or wagon is selected
+const origWagonSetter = selectedWagon;
+document.querySelectorAll('.wagon-img-btn').forEach(btn => {
+    btn.addEventListener('click', updateRegisterBtn);
+});
+document.querySelectorAll('.seat-btn').forEach(btn => {
+    btn.addEventListener('click', updateRegisterBtn);
+});
+
+updateRegisterBtn();
+
+registerBtn?.addEventListener('click', function(e) {
+    if (!isFormValid()) {
+        e.preventDefault();
+        updateRegisterBtn();
+        return;
+    }
     // Gather all info
     const passengerName = document.getElementById('passenger-name').value;
     const passengerLastname = document.getElementById('passenger-lastname').value;
