@@ -50,6 +50,7 @@ button:hover {
     display: flex;
     flex-direction: column;
     gap: 18px;
+    align-items: center; /* center ticket cards horizontally */
 }
 .result-card {
     display: grid;
@@ -135,5 +136,107 @@ footer {
     height: 150px;
     color: rgb(0, 0, 0);
     text-align: center;
+}
+
+/* Ticket card template styles (converted from SCSS) */
+:root{
+    --ticket-red: #2840BF;
+    --ticket-grey: #F5F6FA;
+    --ticket-black: #343434;
+}
+.cardWrap {
+    width: 100%;
+    max-width: 1000px; /* constrain overall container */
+    margin: 2em auto;
+    color: #fff;
+    font-family: 'Poppins', sans-serif;
+}
+.card {
+    background: linear-gradient(to bottom, var(--ticket-red) 0%, var(--ticket-red) 26%, var(--ticket-grey) 26%, var(--ticket-grey) 100%);
+    height: 11em;
+    position: relative;
+    padding: 1em;
+    margin: 0 auto; /* center block */
+    border-radius: 8px;
+    overflow: hidden;
+    display: flex;
+    float: none; /* remove float so centering works */
+    width: 100%;
+    max-width: 800px; /* fluid but constrained */
+}
+.cardLeft {
+    border-top-left-radius: 8px;
+    border-bottom-left-radius: 8px;
+    width: calc(100% - 6.5em); /* leave space for right panel */
+}
+.cardRight {
+    width: 6.5em;
+    border-left: .18em dashed #fff;
+    border-top-right-radius: 8px;
+    border-bottom-right-radius: 8px;
+    position: relative;
+}
+.cardRight:before,
+.cardRight:after {
+    content: "";
+    position: absolute;
+    display: block;
+    width: .9em;
+    height: .9em;
+    background: #fff;
+    border-radius: 50%;
+    left: -.5em;
+}
+.cardRight:before { top: -.4em; }
+.cardRight:after { bottom: -.4em; }
+
+.card h1 { font-size: 1.1em; margin-top: 0; }
+.card h1 span { font-weight: normal; }
+
+.title, .name, .seat, .time { text-transform: uppercase; font-weight: normal; }
+.title h2, .name h2, .seat h2, .time h2 { font-size: .9em; color: #525252; margin: 0; }
+.title span, .name span, .seat span, .time span { font-size: .7em; color: #a2aeae; }
+.title { margin: 1.2em 0 0 0; }
+.name, .seat { margin: .7em 0 0 0; }
+.time { margin: .7em 0 0 1em; }
+.seat, .time { float: left; }
+
+.number { text-align: center; text-transform: uppercase; }
+.number h3 { color: var(--ticket-red); margin: .85em 0 0 0; font-size: 2.5em; }
+.number span { display: block; color: #a2aeae; }
+
+.barcode { height: 2em; width: 0; margin: 1.2em 0 0 .8em; box-shadow: 1px 0 0 1px var(--ticket-black), 5px 0 0 1px var(--ticket-black), 10px 0 0 1px var(--ticket-black), 11px 0 0 1px var(--ticket-black), 15px 0 0 1px var(--ticket-black), 18px 0 0 1px var(--ticket-black), 22px 0 0 1px var(--ticket-black), 23px 0 0 1px var(--ticket-black), 26px 0 0 1px var(--ticket-black), 30px 0 0 1px var(--ticket-black), 35px 0 0 1px var(--ticket-black), 37px 0 0 1px var(--ticket-black), 41px 0 0 1px var(--ticket-black), 44px 0 0 1px var(--ticket-black), 47px 0 0 1px var(--ticket-black), 51px 0 0 1px var(--ticket-black), 56px 0 0 1px var(--ticket-black), 59px 0 0 1px var(--ticket-black), 64px 0 0 1px var(--ticket-black), 68px 0 0 1px var(--ticket-black), 72px 0 0 1px var(--ticket-black), 74px 0 0 1px var(--ticket-black), 77px 0 0 1px var(--ticket-black), 81px 0 0 1px var(--ticket-black);
+
+}
+
+/* Replace the barcode area with a centered booking button */
+.cardRight-action {
+    position: absolute;
+    left: 45%;
+    bottom: 0px;
+    transform: translateX(-50%);
+    text-align: center;
+    width: calc(100% - 16px);
+    padding: 0 8px;
+}
+.cardRight .book-btn {
+    display: inline-block;
+    background-color: #2E45BF;
+    color: #fff;
+    border: none;
+    padding: 8px 10px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: 600;
+}
+.cardRight .book-btn:hover {
+    background-color: #314dff;
+}
+
+/* Make sure ticket cards are responsive */
+@media (max-width: 800px) {
+    .cardWrap { width: 95%; }
+    .card { flex-direction: row; height: auto; padding: 12px; }
+    .number h3 { color: var(--ticket-red); margin: 1.2em 0 0 0; font-size: 2.5em; }
 }
 

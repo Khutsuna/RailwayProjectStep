@@ -27,23 +27,24 @@ function renderResults(items) {
             const arriveTime = t?.arrive ?? '';
             const from = t?.from ?? dep?.source ?? '';
             const to = t?.to ?? dep?.destination ?? '';
+            // Build ticket card markup based on provided template
             return `
-            <div class="result-card">
-                <div class="result-card__left">
-                    <div class="result-card__train">#${trainNumber}</div>
-                    <div class="result-card__name">${trainName}</div>
+            <div class="cardWrap" data-train-id="${t?.id}" data-departure-id="${dep?.id}">
+              <div class="card">
+                <div class="cardLeft">
+                  <h1>${trainName} <span>#${trainNumber}</span></h1>
+                  <div class="title"><h2>${from} → ${to}</h2><span>marsh</span></div>
+                  <div class="name"><h2>${trainName}</h2><span>train</span></div>
+                                    <div class="seat"><h2>${departTime}</h2><span>departure</span></div>
+                                    <div class="time"><h2>${arriveTime}</h2><span>arrival</span></div>
                 </div>
-                <div class="result-card__mid">
-                    <div class="result-card__time">${departTime}</div>
-                    <div class="result-card__city">${from}</div>
+                <div class="cardRight">
+                                    <div class="number"><h3>${trainNumber}</h3><span>train</span></div>
+                                    <div class="cardRight-action">
+                                        <button class="btn btn-primary book-btn" data-train-id="${t?.id}" data-departure-id="${dep?.id}">დაჯავშნა</button>
+                                    </div>
                 </div>
-                <div class="result-card__mid">
-                    <div class="result-card__time">${arriveTime}</div>
-                    <div class="result-card__city">${to}</div>
-                </div>
-                <div class="result-card__right">
-                    <button class="btn btn-primary" data-train-id="${t?.id}" data-departure-id="${dep?.id}">დაჯავშნა</button>
-                </div>
+              </div>
             </div>`;
         }).join('');
     }).join('');
@@ -84,19 +85,20 @@ resultsEl?.addEventListener('click', (e) => {
     const trainId = btn.getAttribute('data-train-id');
     const departureId = btn.getAttribute('data-departure-id');
     // Find train info from DOM
-    const card = btn.closest('.result-card');
-    const trainNumber = card?.querySelector('.result-card__train')?.textContent?.replace('#','') || '';
-    const trainName = card?.querySelector('.result-card__name')?.textContent || '';
-    const departTime = card?.querySelectorAll('.result-card__time')[0]?.textContent || '';
-    const arriveTime = card?.querySelectorAll('.result-card__time')[1]?.textContent || '';
-    const from = card?.querySelectorAll('.result-card__city')[0]?.textContent || '';
-    const to = card?.querySelectorAll('.result-card__city')[1]?.textContent || '';
+    const card = btn.closest('.cardWrap');
+    const trainNumber = card?.querySelector('.number h3')?.textContent || '';
+    const trainName = card?.querySelector('.cardLeft h1')?.textContent?.replace(`#${trainNumber}`,'').trim() || '';
+    const departTime = card?.querySelector('.seat h2')?.textContent || '';
+    const arriveTime = card?.querySelector('.time h2')?.textContent || '';
+    const fromTo = card?.querySelector('.title h2')?.textContent || '';
+    const [from, to] = fromTo.split('→').map(s => s ? s.trim() : '');
     // Also get search params from URL
     const urlParams = new URLSearchParams(window.location.search);
     const date = urlParams.get('date') || '';
+    const passengers = urlParams.get('passengers') || '1';
     // Redirect to book.html with all info
     const params = new URLSearchParams({
-        trainId, departureId, from, to, date, trainNumber, trainName, departTime, arriveTime
+        trainId, departureId, from, to, date, trainNumber, trainName, departTime, arriveTime, passengers
     });
     window.location.href = `book.html?${params.toString()}`;
 });

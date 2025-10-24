@@ -155,9 +155,10 @@ button:hover, .btn:hover, input[type="button"]:hover, input[type="submit"]:hover
 .invoice-seat {
     border: none;
     background: transparent;
-    font-size: 18px;
+    font-size: 16px;
     color: #222;
-    width: 80px;
+    width: 100%;
+    flex: 1;
 }
 .invoice-price {
     font-size: 18px;
@@ -453,7 +454,14 @@ button {
     flex-direction: column;
     align-items: center;
     min-width: 180px;
+    transition: background-color 0.2s, color 0.2s;
 }
+
+.luggage-item:hover {
+    background-color: #2E45BF;
+    color: white;
+}
+
 .luggage-icon {
     width: 48px;
     height: 48px;

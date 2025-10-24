@@ -4,6 +4,15 @@ const dateInput = document.getElementById('date');
 const resultsEl = document.getElementById('results');
 const bookingForm = document.querySelector('.booking-card form');
 
+// Prevent selecting past dates: set the min attribute to today's date (local)
+if (dateInput) {
+  const now = new Date();
+  const yyyy = now.getFullYear();
+  const mm = String(now.getMonth() + 1).padStart(2, '0');
+  const dd = String(now.getDate()).padStart(2, '0');
+  dateInput.min = `${yyyy}-${mm}-${dd}`;
+}
+
 
 fetch("https://railway.stepprojects.ge/api/stations")
     .then(response => response.json())
@@ -79,6 +88,11 @@ bookingForm?.addEventListener('submit', (e) => {
   // Validate all fields
   if (!from || !to || !dateStr || !passengers) {
     alert('გთხოვთ შეავსოთ ყველა ველი!');
+    return;
+  }
+  // Ensure selected date is not before min (grayed-out days)
+  if (dateInput && dateInput.min && dateStr < dateInput.min) {
+    alert('გთხოვთ აირჩიოთ მიმდინარე თარიღი ან მომდევნო თარიღი.');
     return;
   }
   // Redirect to tickets.html with query params
