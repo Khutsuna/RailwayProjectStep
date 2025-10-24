@@ -70,7 +70,6 @@
         <div id="ticket-result" style="margin-top:30px;font-size:1.2em;font-weight:500;color:#2346c7;"></div>
     </div>
 <script>
-// Check ticketId dynamically from localStorage
 document.getElementById('check-form').addEventListener('submit', function(e) {
     e.preventDefault();
     const seatId = document.getElementById('ticket-number').value.trim();
@@ -80,7 +79,6 @@ document.getElementById('check-form').addEventListener('submit', function(e) {
         result.style.color = '#d00';
         return;
     }
-    // Try to get bookingData from localStorage
     let found = false;
     for (let i = 0; i < localStorage.length; i++) {
         const key = localStorage.key(i);

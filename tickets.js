@@ -1,6 +1,3 @@
-// tickets.js
-// Reads ?from=...&to=...&date=... from URL, fetches departures, renders results
-
 const resultsEl = document.getElementById('results');
 
 function getQueryParams() {
@@ -27,7 +24,7 @@ function renderResults(items) {
             const arriveTime = t?.arrive ?? '';
             const from = t?.from ?? dep?.source ?? '';
             const to = t?.to ?? dep?.destination ?? '';
-            // Build ticket card markup based on provided template
+            
             return `
             <div class="cardWrap" data-train-id="${t?.id}" data-departure-id="${dep?.id}">
               <div class="card">
@@ -76,7 +73,6 @@ async function main() {
 
 main();
 
-// Delegate clicks on "დაჯავშნა" buttons
 resultsEl?.addEventListener('click', (e) => {
     const target = e.target;
     if (!(target instanceof Element)) return;
@@ -84,7 +80,7 @@ resultsEl?.addEventListener('click', (e) => {
     if (!btn) return;
     const trainId = btn.getAttribute('data-train-id');
     const departureId = btn.getAttribute('data-departure-id');
-    // Find train info from DOM
+    
     const card = btn.closest('.cardWrap');
     const trainNumber = card?.querySelector('.number h3')?.textContent || '';
     const trainName = card?.querySelector('.cardLeft h1')?.textContent?.replace(`#${trainNumber}`,'').trim() || '';
@@ -92,11 +88,11 @@ resultsEl?.addEventListener('click', (e) => {
     const arriveTime = card?.querySelector('.time h2')?.textContent || '';
     const fromTo = card?.querySelector('.title h2')?.textContent || '';
     const [from, to] = fromTo.split('→').map(s => s ? s.trim() : '');
-    // Also get search params from URL
+    
     const urlParams = new URLSearchParams(window.location.search);
     const date = urlParams.get('date') || '';
     const passengers = urlParams.get('passengers') || '1';
-    // Redirect to book.html with all info
+    
     const params = new URLSearchParams({
         trainId, departureId, from, to, date, trainNumber, trainName, departTime, arriveTime, passengers
     });

@@ -39,20 +39,14 @@
                     <button type="submit" class="btn btn-primary payment-btn">გადახდა</button>
                 </form>
                 <script>
-                // On payment submit, gather all data and save to localStorage, then redirect
                 document.getElementById('payment-form').addEventListener('submit', function(e) {
                     e.preventDefault();
-                    // Get payment info
                     const cardholder = document.getElementById('cardholder').value;
                     const cardNumber = document.getElementById('cardNumber').value;
-                    // Get previous booking data
                     let data = JSON.parse(localStorage.getItem('bookingData') || '{}');
-                    // Add payment info
                     data.cardholder = cardholder;
                     data.cardNumber = cardNumber;
-                    // Add date
                     data.date = new Date().toLocaleDateString('ka-GE', { year: 'numeric', month: '2-digit', day: '2-digit' });
-                    // Generate ticketId (UUID) if not present
                     if (!data.ticketId) {
                         data.ticketId = ([1e7]+-1e3+-4e3+-8e3+-1e11).replace(/[018]/g, c =>
                             (c ^ crypto.getRandomValues(new Uint8Array(1))[0] & 15 >> c / 4).toString(16)

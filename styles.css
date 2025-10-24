@@ -1,4 +1,3 @@
-/* Smooth hover for ბილეთის შემოწმება/დაბრუნება button */
 .btn, button.btn, .check-ticket-btn {
     transition: background-color 0.2s;
 }

@@ -10,12 +10,10 @@ function renderInvoice() {
     const data = JSON.parse(localStorage.getItem('bookingData') || '{}');
     const el = document.getElementById('invoice-section');
     if (!el) return;
-    // Support multiple passengers stored in data.passengers (array)
     const passengers = Array.isArray(data.passengers) ? data.passengers : [];
     const ticketId = data.ticketId || (passengers[0] && passengers[0].seatId) || '---';
     const purchaseDate = data.date || new Date().toLocaleDateString();
 
-    // Build rows for each passenger
     const rows = passengers.map(p => {
         return `<tr>
             <td>${p.name || ''}</td>
@@ -29,7 +27,6 @@ function renderInvoice() {
     // Determine total price
     let totalPrice = 0;
     if (data.price) {
-        // try to parse stored price
         const parsed = parseFloat(String(data.price).replace(/[₾,\s]/g, ''));
         if (!Number.isNaN(parsed)) totalPrice = parsed;
     }

@@ -1,6 +1,3 @@
-// book.js
-// Reads ticket info from URL, displays summary, handles booking form
-
 function getQueryParams() {
     const params = new URLSearchParams(window.location.search);
     return {
@@ -39,10 +36,9 @@ function renderTicketSummary(params) {
 const params = getQueryParams();
 renderTicketSummary(params);
 
-// Wagon selection modal logic
 const wagonModal = document.getElementById('wagon-modal');
 const closeModalBtn = document.getElementById('close-modal');
-let currentPassengerIndex = 0; // Track which passenger is selecting a seat
+let currentPassengerIndex = 0;
 
 // Arrays to track each passenger's wagon and seat selection
 const passengerCount = parseInt(getQueryParams().passengers) || 1;
@@ -68,32 +64,23 @@ closeModalBtn?.addEventListener('click', () => {
 const seatModal = document.getElementById('seat-modal');
 const closeSeatModalBtn = document.getElementById('close-seat-modal');
 
-// Invoice registration button logic
 const registerBtn = document.getElementById('register-btn');
 
 function isFormValid() {
-    // Check email and phone
     if (!document.getElementById('email').value.trim() || !document.getElementById('phone').value.trim()) {
         return false;
     }
-    
-    // Check all passenger fields
     for (let i = 0; i < passengerCount; i++) {
         const name = document.getElementById(`passenger-name-${i}`);
         const lastname = document.getElementById(`passenger-lastname-${i}`);
         const id = document.getElementById(`passenger-id-${i}`);
-        
         if (!name?.value.trim() || !lastname?.value.trim() || !id?.value.trim()) {
             return false;
         }
-        
-        // Check that each passenger has selected a seat
         if (!passengerSeats[i] || !passengerWagons[i]) {
             return false;
         }
     }
-    
-    // Check checkbox
     return document.getElementById('invoice-check').checked;
 }
 
@@ -103,7 +90,6 @@ function updateRegisterBtn() {
     }
 }
 
-// Generate passenger fields based on passenger count
 function generatePassengerFields(count) {
     const container = document.getElementById('passengers-container');
     if (!container) return;
@@ -124,22 +110,18 @@ function generatePassengerFields(count) {
         container.appendChild(passengerDiv);
     }
     
-    // Reattach event listeners for dynamically created buttons
     attachSeatSelectionListeners();
     attachIdInputListeners();
     updateRegisterBtn();
 }
 
-// Ensure passenger ID inputs accept only digits and max 11 characters
 function attachIdInputListeners() {
     document.querySelectorAll('.passenger-id-input').forEach(input => {
-        // clean existing listener by replacing the element? We'll just add listener; duplicates are unlikely because we call after regeneration
         input.addEventListener('input', (e) => {
             const cleaned = input.value.replace(/\D/g, '').slice(0,11);
             if (input.value !== cleaned) input.value = cleaned;
             updateRegisterBtn();
         });
-        // optional: prevent non-numeric keypresses
         input.addEventListener('keypress', (e) => {
             const char = String.fromCharCode(e.which || e.keyCode);
             if (!/\d/.test(char)) e.preventDefault();
@@ -147,18 +129,18 @@ function attachIdInputListeners() {
     });
 }
 
-// Initialize passenger fields
 generatePassengerFields(passengerCount);
 
-// Wagon button event listeners
 document.querySelectorAll('.wagon-img-btn').forEach(btn => {
     btn.addEventListener('click', () => {
         document.querySelectorAll('.wagon-img-btn').forEach(b => b.classList.remove('selected'));
         btn.classList.add('selected');
         const selectedWagon = btn.getAttribute('data-wagon');
         passengerWagons[currentPassengerIndex] = selectedWagon;
-        // Show seat modal and update wagon number
         document.getElementById('seat-wagon-number').textContent = selectedWagon;
+        // compute occupied seats from existing bookings and current selections
+        const occupied = getOccupiedSeatsForWagon(selectedWagon);
+        setOccupiedSeats(occupied);
         seatModal.style.display = 'flex';
         wagonModal.style.display = 'none';
     });
@@ -180,17 +162,34 @@ function setOccupiedSeats(occupiedSeats) {
     });
 }
 
-// Example usage: fetch occupied seats from API, then update
-// fetch('/api/occupiedSeats?wagon=' + selectedWagon)
-//   .then(res => res.json())
-//   .then(seats => setOccupiedSeats(seats));
+function getOccupiedSeatsForWagon(wagon) {
+    const occupied = new Set();
+    for (let i = 0; i < localStorage.length; i++) {
+        const key = localStorage.key(i);
+        if (!key) continue;
+        try {
+            const data = JSON.parse(localStorage.getItem(key));
+            if (data && Array.isArray(data.passengers)) {
+                data.passengers.forEach(p => {
+                    if (!p) return;
+                    if (String(p.wagon) === String(wagon) && p.seat) occupied.add(p.seat);
+                });
+            }
+        } catch (e) {}
+    }
+    for (let i = 0; i < passengerCount; i++) {
+        if (i === currentPassengerIndex) continue;
+        if (passengerWagons[i] && String(passengerWagons[i]) === String(wagon) && passengerSeats[i]) {
+            occupied.add(passengerSeats[i]);
+        }
+    }
+    if (passengerSeats[currentPassengerIndex] && passengerWagons[currentPassengerIndex] && String(passengerWagons[currentPassengerIndex]) === String(wagon)) {
+        occupied.delete(passengerSeats[currentPassengerIndex]);
+    }
+    return Array.from(occupied);
+}
 
-// Initial static example
-setOccupiedSeats(['2B', '7D']);
-
-// Example: seatIdMap = { '2B': '0d0f2873-a8e8-4389-b197-77f272a6eb50', ... }
 let seatIdMap = {};
-// TODO: Populate seatIdMap from API when loading seat modal
 
 document.querySelectorAll('.seat-btn').forEach(btn => {
     btn.addEventListener('click', () => {
@@ -215,7 +214,6 @@ document.querySelectorAll('.seat-btn').forEach(btn => {
     });
 });
 
-// Function to update invoice with all passenger seats and total price
 function updateInvoice() {
     const invoiceSeatInput = document.querySelector('.invoice-seat');
     const invoicePriceSpan = document.querySelector('.invoice-price');
@@ -249,7 +247,6 @@ bookingForm?.addEventListener('submit', async (e) => {
     e.preventDefault();
     const email = document.getElementById('email').value;
     const phone = document.getElementById('phone').value;
-    // Here you would POST to /api/tickets/register with all info
     alert(`დაჯავშნა დასრულებულია!\nEmail: ${email}\nPhone: ${phone}`);
 });
 

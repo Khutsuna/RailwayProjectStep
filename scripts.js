@@ -4,7 +4,6 @@ const dateInput = document.getElementById('date');
 const resultsEl = document.getElementById('results');
 const bookingForm = document.querySelector('.booking-card form');
 
-// Prevent selecting past dates: set the min attribute to today's date (local)
 if (dateInput) {
   const now = new Date();
   const yyyy = now.getFullYear();
@@ -75,7 +74,7 @@ async function checkAvailability(from, to, dateStr) {
   const params = new URLSearchParams({ from, to, date: dateStr });
   const res = await fetch(`https://railway.stepprojects.ge/api/getdeparture?${params.toString()}`);
   if (!res.ok) throw new Error('Failed to fetch departures');
-  const departures = await res.json(); // array of { id, source, destination, date, trains: [...] }
+  const departures = await res.json(); 
   return departures;
 }
 
@@ -85,22 +84,21 @@ bookingForm?.addEventListener('submit', (e) => {
   const to = stationTo?.value || '';
   const dateStr = dateInput?.value || '';
   const passengers = document.getElementById('passengers')?.value || '';
-  // Validate all fields
+
   if (!from || !to || !dateStr || !passengers) {
     alert('გთხოვთ შეავსოთ ყველა ველი!');
     return;
   }
-  // Ensure selected date is not before min (grayed-out days)
+
   if (dateInput && dateInput.min && dateStr < dateInput.min) {
     alert('გთხოვთ აირჩიოთ მიმდინარე თარიღი ან მომდევნო თარიღი.');
     return;
   }
-  // Redirect to tickets.html with query params
+
   const params = new URLSearchParams({ from, to, date: dateStr, passengers });
   window.location.href = `tickets.html?${params.toString()}`;
 });
 
-// Delegate clicks on "დაჯავშნა" buttons
 resultsEl?.addEventListener('click', (e) => {
   const target = e.target;
   if (!(target instanceof Element)) return;
@@ -117,11 +115,11 @@ async function registerTicket({ trainId, dateIso, email, phoneNumber, people }) 
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({
       trainId,
-      date: dateIso,               // e.g. "2025-10-18T09:00:00Z"
+      date: dateIso,            
       email,
       phoneNumber,
       people: people.map(p => ({
-        seatId: p.seatId,          // required UUID
+        seatId: p.seatId,   
         name: p.name || null,
         surname: p.surname || null,
         idNumber: p.idNumber || null,
@@ -131,5 +129,5 @@ async function registerTicket({ trainId, dateIso, email, phoneNumber, people }) 
     })
   });
   if (!res.ok) throw new Error('Ticket registration failed');
-  return res.json(); // returns Ticket
+  return res.json();
 }
